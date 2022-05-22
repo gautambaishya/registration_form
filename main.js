@@ -23,61 +23,85 @@
 // ul.firstElementChild.style.color = 'green';
 // ul.children[1].style.color = 'yellow';
 
-const btn = document.querySelector('.btn');
- //btn.style.background = 'red';
+// const btn = document.querySelector('.btn');
+//  //btn.style.background = 'red';
 
-btn.addEventListener('click', (e) => {
+// btn.addEventListener('click', (e) => {
     
-    document.querySelector('#my-form').style.backgroung = '#ccc';
-    document.querySelector('body').classList.add('bg-dark');
-    document.querySelector('.items').lastElementChild.style.color = 'red'
+//     document.querySelector('#my-form').style.backgroung = '#ccc';
+//     document.querySelector('body').classList.add('bg-dark');
+//     document.querySelector('.items').lastElementChild.style.color = 'red'
     
-});
-btn.addEventListener('mouseover', (e) => {
-    e.preventDefault();
-    document.querySelector('#my-form').style.backgroung = '#ccc';
-    document.querySelector('body').classList.add('bg-dark');
-    document.querySelector('.items').lastElementChild.style.color = 'red'
+// });
+// btn.addEventListener('mouseover', (e) => {
+//     e.preventDefault();
+//     document.querySelector('#my-form').style.backgroung = '#ccc';
+//     document.querySelector('body').classList.add('bg-dark');
+//     document.querySelector('.items').lastElementChild.style.color = 'red'
     
-});
-btn.addEventListener('mouseout', (e) => {
-    //e.preventDefault();
-    document.querySelector('#my-form').style.backgroung = '#ccc';
-    document.querySelector('body').classList.add('bg-dark');
-    document.querySelector('.items').lastElementChild.style.color = 'red'
+// });
+// btn.addEventListener('mouseout', (e) => {
+//     //e.preventDefault();
+//     document.querySelector('#my-form').style.backgroung = '#ccc';
+//     document.querySelector('body').classList.add('bg-dark');
+//     document.querySelector('.items').lastElementChild.style.color = 'red'
     
-});
+// });
 
+// const myForm = document.querySelector('#my-form');
+// const nameInput = document.querySelector('#name');
+// const emailInput = document.querySelector('#email');
+// const msg = document.querySelector('.msg');
+// const userList = document.querySelector('#users');
+
+// myForm.addEventListener('submit', onSubmit);
+
+// function onSubmit(e){
+//     e.preventDefault();
+//     console.log(nameInput.value);
+
+//     if(nameInput.value === '' || emailInput.value === ''){
+//         //alert('Please enter fields');
+//         msg.classList.add('error');
+//         msg.innerHTML = 'Please enter all fields';
+
+//         setTimeout(()=> msg.remove(),3000);
+//     } else {
+//         //console.log('Success');
+//         const li = document.createElement('li');
+//         li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+
+//         userList.appendChild(li);
+
+//         //clear the fields
+//         nameInput.value ='';
+//         emailInput.value = '';
+//     }
+// }
+
+
+
+// localStorage.setItem('name', 'gautam')
+// console.log(localStorage.getItem('name'));
+// localStorage.removeItem('name')
+// const localName = document.getElementById('name').value
+// localStorage.setItem('Name', localName);
+// // console.log(localName);
+
+// const localemail = document.getElementById('email').value
+// localStorage.setItem('Email', localemail);
 const myForm = document.querySelector('#my-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const msg = document.querySelector('.msg');
-const userList = document.querySelector('#users');
 
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e){
     e.preventDefault();
-    console.log(nameInput.value);
+    const localName = document.getElementById('name').value
+    localStorage.setItem('Name', localName);
+    // console.log(localName);
 
-    if(nameInput.value === '' || emailInput.value === ''){
-        //alert('Please enter fields');
-        msg.classList.add('error');
-        msg.innerHTML = 'Please enter all fields';
+    const localemail = document.getElementById('email').value
+    localStorage.setItem('Email', localemail);
 
-        setTimeout(()=> msg.remove(),3000);
-    } else {
-        //console.log('Success');
-        const li = document.createElement('li');
-        li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
-
-        userList.appendChild(li);
-
-        //clear the fields
-        nameInput.value ='';
-        emailInput.value = '';
-    }
+    
 }
-
-
-
