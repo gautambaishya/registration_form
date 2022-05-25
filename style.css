@@ -41,6 +41,13 @@
     display: block;
   }
   
+  #output {
+    padding: 2rem;
+    background: #f4f4f4;
+  }
+ 
+
+  
   #my-form input[type='text'] {
     width: 100%;
     padding: 8px;

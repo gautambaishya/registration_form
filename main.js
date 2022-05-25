@@ -90,18 +90,70 @@
 
 // const localemail = document.getElementById('email').value
 // localStorage.setItem('Email', localemail);
+
+
+// const myForm = document.querySelector('#my-form');
+
+// myForm.addEventListener('submit', onSubmit);
+
+// function onSubmit(e){
+//     e.preventDefault();
+//     const localName = document.getElementById('name').value
+//     localStorage.setItem('Name', localName);
+//     // console.log(localName);
+
+//     const localemail = document.getElementById('email').value
+//     localStorage.setItem('Email', localemail);
+
+    
+// }
 const myForm = document.querySelector('#my-form');
 
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e){
     e.preventDefault();
-    const localName = document.getElementById('name').value
-    localStorage.setItem('Name', localName);
-    // console.log(localName);
+    
+    localName = document.getElementById('name').value,
+    email = document.getElementById('email').value,
 
-    const localemail = document.getElementById('email').value
-    localStorage.setItem('Email', localemail);
+    formData = JSON.parse(localStorage.getItem('formData')) || [];
 
+    let exist = formData.length && 
+        JSON.parse(localStorage.getItem('formData')).some(data => 
+            data.localName.toLowerCase() == localName.toLowerCase() && 
+            data.email.toLowerCase() == email.toLowerCase()
+        );
+
+    if(!exist){
+        formData.push({ localName, email});
+        localStorage.setItem('formData', JSON.stringify(formData));
+        document.getElementById('my-form').reset();
+        document.getElementById('name').focus();
+        alert("Added User.");
+    }
+    else{
+        alert("Ooopppssss... Duplicate found!!!\nYou have already added.");
+    }
+    disData();
     
 }
+// console.log(localStorage.getItem('formData'));
+
+function disData() {
+    // console.log(localStorage.getItem('formData'));
+    if (localStorage.getItem('formData')) {
+        var output = document.querySelector('tbody');
+        output.innerHTML = "";
+        JSON.parse(localStorage.getItem('formData')).forEach(Element => {           
+            output.innerHTML += `
+                    <tr>
+                        <td>${Element.localName}</td>
+                        <td>${Element.email}</td>
+                    </tr>
+                    `;
+        });
+
+    }
+}
+disData();
